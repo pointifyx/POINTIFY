@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Pointify</title>
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <span>👑 Pointify Admin</span>
+        </div>
+        <ul class="navbar-nav">
+            <li><a href="#" onclick="showSection('dashboard')">Dashboard</a></li>
+            <li><a href="#" onclick="showSection('approvals')">Approvals</a></li>
+            <li><a href="#" onclick="showSection('users')">All Users</a></li>
+            <li><a href="#" onclick="showSection('agents')">Agents</a></li>
+            <li><a href="#" onclick="showSection('reports')">Reports</a></li>
+            <li><a href="login.html" class="btn btn-secondary">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <ul class="sidebar-menu">
+                    <li><a href="#" onclick="showSection('dashboard')" class="active">📊 Overview</a></li>
+                    <li><a href="#" onclick="showSection('approvals')">✅ Approvals</a></li>
+                    <li><a href="#" onclick="showSection('users')">👥 All Users</a></li>
+                    <li><a href="#" onclick="showSection('agents')">🤝 Agents</a></li>
+                    <li><a href="#" onclick="showSection('reports')">📈 Reports</a></li>
+                    <li><a href="#" onclick="showSection('system')">⚙️ System</a></li>
+                </ul>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Dashboard Overview -->
+                <div id="dashboard-section">
+                    <h2 class="card-title">System Overview</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalShops">0</div>
+                            <div class="stat-label">Total Shops</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalAgents">0</div>
+                            <div class="stat-label">Agents</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="pendingApprovalCount">0</div>
+                            <div class="stat-label">Pending Approval</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="systemRevenue">$0</div>
+                            <div class="stat-label">System Revenue</div>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-top: 2rem;">
+                        <div class="card">
+                            <h3 class="card-title">Recent Registrations</h3>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Shop Name</th>
+                                        <th>Owner</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentRegistrations">
+                                    <!-- Recent registrations will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="card">
+                            <h3 class="card-title">Quick Actions</h3>
+                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <button class="btn btn-primary" onclick="showSection('approvals')">
+                                    Review Approvals
+                                </button>
+                                <button class="btn btn-secondary" onclick="showSection('agents')">
+                                    Manage Agents
+                                </button>
+                                <button class="btn btn-secondary" onclick="generateSystemReport()">
+                                    Generate Report
+                                </button>
+                                <button class="btn btn-secondary" onclick="showSection('system')">
+                                    System Settings
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Approvals Section -->
+                <div id="approvals-section" class="hidden">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Pending Approvals</h3>
+                            <div>
+                                <span id="pendingCount" class="stat-number" style="font-size: 1.5rem;">0</span>
+                                <span style="color: var(--text-light);"> shops waiting approval</span>
+                            </div>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Shop Name</th>
+                                    <th>Owner</th>
+                                    <th>Currency</th>
+                                    <th>Agent</th>
+                                    <th>Register Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="approvalsTable">
+                                <!-- Pending approvals will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- All Users Section -->
+                <div id="users-section" class="hidden">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">All System Users</h3>
+                            <input type="text" id="userSearch" class="form-control" 
+                                   placeholder="Search users..." style="width: 300px;">
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Shop Name</th>
+                                    <th>Username</th>
+                                    <th>Currency</th>
+                                    <th>Status</th>
+                                    <th>Agent</th>
+                                    <th>Join Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="allUsersTable">
+                                <!-- All users will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Agents Section -->
+                <div id="agents-section" class="hidden">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Agent Management</h3>
+                            <button class="btn btn-primary" onclick="showAddAgentModal()">Add New Agent</button>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Commission</th>
+                                    <th>Customers</th>
+                                    <th>Total Commission</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="agentsTable">
+                                <!-- Agents will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Reports Section -->
+                <div id="reports-section" class="hidden">
+                    <div class="card">
+                        <h3 class="card-title">System Reports</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                            <div>
+                                <h4>Generate Report</h4>
+                                <div class="form-group">
+                                    <label class="form-label">Report Type</label>
+                                    <select class="form-control" id="reportType">
+                                        <option value="sales">Sales Summary</option>
+                                        <option value="users">User Activity</option>
+                                        <option value="agents">Agent Performance</option>
+                                        <option value="financial">Financial Report</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Date Range</label>
+                                    <select class="form-control" id="reportRange">
+                                        <option value="today">Today</option>
+                                        <option value="week">This Week</option>
+                                        <option value="month">This Month</option>
+                                        <option value="quarter">This Quarter</option>
+                                        <option value="year">This Year</option>
+                                        <option value="custom">Custom Range</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-primary" onclick="generateReport()">Generate Report</button>
+                                <button class="btn btn-secondary" onclick="exportReport()">Export as PDF</button>
+                            </div>
+
+                            <div>
+                                <h4>System Statistics</h4>
+                                <div id="systemStats">
+                                    <!-- System stats will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Settings -->
+                <div id="system-section" class="hidden">
+                    <div class="card">
+                        <h3 class="card-title">System Settings</h3>
+                        <div style="display: grid; gap: 2rem;">
+                            <div>
+                                <h4>Email Configuration</h4>
+                                <div class="form-group">
+                                    <label class="form-label">SMTP Host</label>
+                                    <input type="text" class="form-control" value="smtp.gmail.com">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" placeholder="admin@pointify.info">
+                                </div>
+                                <button class="btn btn-primary">Update Email Settings</button>
+                            </div>
+
+                            <div>
+                                <h4>System Maintenance</h4>
+                                <button class="btn btn-secondary" onclick="backupDatabase()">Backup Database</button>
+                                <button class="btn btn-secondary" onclick="clearCache()">Clear Cache</button>
+                                <button class="btn btn-danger" onclick="systemReset()">System Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="src/js/main.js"></script>
+    <script src="src/js/admin.js"></script>
+</body>
+</html>
