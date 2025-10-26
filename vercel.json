@@ -6,11 +6,11 @@
       "use": "@vercel/node"
     },
     {
-      "src": "public/**/*.html",
+      "src": "*.html",
       "use": "@vercel/static"
     },
     {
-      "src": "public/**/*",
+      "src": "src/**/*",
       "use": "@vercel/static"
     }
   ],
@@ -20,20 +20,28 @@
       "dest": "/server/app.js"
     },
     {
-      "src": "/sw.js",
-      "dest": "/public/sw.js"
+      "src": "/src/(.*)",
+      "dest": "/src/$1"
     },
     {
-      "src": "/manifest.json",
-      "dest": "/public/manifest.json"
+      "src": "/sw.js",
+      "dest": "/sw.js"
+    },
+    {
+      "src": "/manifest.json", 
+      "dest": "/manifest.json"
     },
     {
       "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|ico|svg))",
-      "dest": "/public/$1"
+      "dest": "/src/$1"
     },
     {
-      "src": "/(.*)",
-      "dest": "/public/$1"
+      "src": "/(login|signup|app|agent|admin)",
+      "dest": "/$1.html"
+    },
+    {
+      "src": "/",
+      "dest": "/index.html"
     }
   ],
   "cleanUrls": true,
