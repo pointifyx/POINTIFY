@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Access - Pointify</title>
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="navbar-brand text-center mb-2">
+                <span>👑 Pointify Admin</span>
+            </div>
+            
+            <h2 class="text-center mb-2">Administrator Access</h2>
+            <p class="text-center mb-2" style="color: var(--text-light);">Secure admin portal</p>
+
+            <div id="adminEmailStep">
+                <div class="form-group">
+                    <label class="form-label">Admin Email</label>
+                    <input type="email" class="form-control" id="adminEmail" required 
+                           value="pointifyx@gmail.com">
+                </div>
+                <button onclick="sendAdminVerification()" class="btn btn-primary" style="width: 100%;">
+                    Send Verification Code
+                </button>
+            </div>
+            
+            <div id="adminCodeStep" class="hidden">
+                <div class="form-group">
+                    <label class="form-label">Verification Code</label>
+                    <input type="text" class="form-control" id="adminCode" required 
+                           placeholder="Enter 6-digit code from email">
+                </div>
+                <button onclick="verifyAdminCode()" class="btn btn-primary" style="width: 100%;">
+                    Verify & Access Dashboard
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="src/js/main.js"></script>
+    <script src="src/js/auth.js"></script>
+</body>
+</html>

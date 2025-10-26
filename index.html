@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pointify - Modern POS System</title>
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <span>🛒 Pointify</span>
+        </div>
+        <ul class="navbar-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="login.html" class="btn btn-secondary">Login</a></li>
+            <li><a href="signup.html" class="btn btn-primary">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section class="hero text-center" style="padding: 4rem 0;">
+            <h1 style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-red);">
+                Modern POS for Modern Business
+            </h1>
+            <p style="font-size: 1.25rem; margin-bottom: 2rem; color: var(--text-light);">
+                Manage your sales, inventory, and customers with Pointify's powerful offline-first POS system.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="signup.html" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">
+                    Start Free Trial
+                </a>
+                <a href="#features" class="btn btn-secondary" style="padding: 1rem 2rem; font-size: 1.1rem;">
+                    Learn More
+                </a>
+            </div>
+        </section>
+
+        <section id="features" style="padding: 4rem 0;">
+            <h2 class="text-center" style="margin-bottom: 3rem; font-size: 2.5rem;">Powerful Features</h2>
+            <div class="stats-grid">
+                <div class="card text-center">
+                    <h3>🛍️ Offline POS</h3>
+                    <p>Work without internet connection. Data syncs when you're back online.</p>
+                </div>
+                <div class="card text-center">
+                    <h3>📊 Real-time Reports</h3>
+                    <p>Track sales, profits, and inventory with beautiful dashboards.</p>
+                </div>
+                <div class="card text-center">
+                    <h3>🌍 Multi-Currency</h3>
+                    <p>Support for USD, KSH, UGX, SOSH and more currencies.</p>
+                </div>
+                <div class="card text-center">
+                    <h3>👥 Multi-User</h3>
+                    <p>Add staff with different roles and permissions.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" style="padding: 4rem 0; background: var(--secondary-gray); margin: 0 -2rem; padding: 4rem 2rem;">
+            <h2 class="text-center" style="margin-bottom: 3rem; font-size: 2.5rem;">Simple Pricing</h2>
+            <div class="stats-grid">
+                <div class="card text-center">
+                    <h3>Starter</h3>
+                    <div class="stat-number" style="color: var(--primary-red);">$29/mo</div>
+                    <p>Perfect for small shops</p>
+                    <ul style="text-align: left; margin: 1rem 0;">
+                        <li>Basic POS Features</li>
+                        <li>Single Device</li>
+                        <li>Email Support</li>
+                    </ul>
+                    <a href="signup.html" class="btn btn-primary">Get Started</a>
+                </div>
+                <div class="card text-center" style="border: 2px solid var(--primary-red);">
+                    <h3>Professional</h3>
+                    <div class="stat-number" style="color: var(--primary-red);">$59/mo</div>
+                    <p>Most popular for growing businesses</p>
+                    <ul style="text-align: left; margin: 1rem 0;">
+                        <li>Advanced Reporting</li>
+                        <li>Multi-Device Support</li>
+                        <li>Priority Support</li>
+                        <li>Inventory Management</li>
+                    </ul>
+                    <a href="signup.html" class="btn btn-primary">Get Started</a>
+                </div>
+                <div class="card text-center">
+                    <h3>Enterprise</h3>
+                    <div class="stat-number" style="color: var(--primary-red);">$99/mo</div>
+                    <p>For large businesses</p>
+                    <ul style="text-align: left; margin: 1rem 0;">
+                        <li>All Professional Features</li>
+                        <li>Multi-Location</li>
+                        <li>Dedicated Support</li>
+                        <li>Custom Integrations</li>
+                    </ul>
+                    <a href="signup.html" class="btn btn-primary">Contact Sales</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" style="padding: 4rem 0;">
+            <h2 class="text-center" style="margin-bottom: 3rem; font-size: 2.5rem;">Contact Us</h2>
+            <div class="card" style="max-width: 600px; margin: 0 auto;">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="contactName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="contactEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Message</label>
+                        <textarea class="form-control" id="contactMessage" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: var(--primary-dark); color: var(--white); padding: 3rem 0 1rem; margin-top: 4rem;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div>
+                    <h3 style="margin-bottom: 1rem;">Pointify POS</h3>
+                    <p>Modern point of sale system for modern businesses. Manage your sales, inventory, and customers with ease.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">Quick Links</h4>
+                    <ul style="list-style: none;">
+                        <li><a href="index.html" style="color: var(--white); text-decoration: none;">Home</a></li>
+                        <li><a href="about.html" style="color: var(--white); text-decoration: none;">About Us</a></li>
+                        <li><a href="terms.html" style="color: var(--white); text-decoration: none;">Terms & Conditions</a></li>
+                        <li><a href="privacy.html" style="color: var(--white); text-decoration: none;">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">Contact</h4>
+                    <p>Email: support@pointify.info</p>
+                    <p>Phone:+256787808071</p>
+                    <p>Website: https://pointify.info</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p>&copy; 2024 Pointify POS System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="src/js/main.js"></script>
+</body>
+</html>
